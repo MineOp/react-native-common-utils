@@ -5,7 +5,7 @@
 ## Installation
 
 ```sh
-npm install react-native-common-utils
+npm install react-native-common-utilss
 ```
 
 ## Usage
