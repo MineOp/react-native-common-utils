@@ -30,3 +30,8 @@ export function RNTransferDistance(option: any, callback: (arg0: any) => void) {
     callback(data);
   });
 }
+export function jumpSystem(option: any, callback: (arg0: any) => void) {
+  return CommonUtils.jumpSystem(option, (data: any) => {
+    callback(data);
+  });
+}

@@ -41,4 +41,39 @@ RCT_EXPORT_METHOD(RNTransferDistance:(NSDictionary *)options :(RCTResponseSender
     callback(array);
     
 }
+RCT_EXPORT_METHOD(jumpSystem:(NSString *)a callback:(RCTResponseSenderBlock)callback)
+{
+    
+    if (@available(iOS 10.0, *)) {
+        
+        
+        NSURL * url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            // 通知主线程刷新
+            [[UIApplication sharedApplication]openURL:url options:@{} completionHandler:^(BOOL success) {
+                
+                
+                
+            }];
+            
+        });
+        
+        
+    }else{
+        
+        //[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"]] 应用标识
+        
+        NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"prefs:root=%@",[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"]]];
+        [[UIApplication sharedApplication]openURL:url options:@{} completionHandler:^(BOOL success) {
+            [[UIApplication sharedApplication] openURL:url];
+            
+            
+        }];
+        
+        
+    }
+    callback(@[@"true"]);
+    
+}
 @end
