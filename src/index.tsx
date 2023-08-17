@@ -20,3 +20,13 @@ const CommonUtils = NativeModules.CommonUtils
 export function multiply(a: number, b: number): Promise<number> {
   return CommonUtils.multiply(a, b);
 }
+export function RNTransferIOSWithCallBack(callback: (arg0: any) => void) {
+  return CommonUtils.RNTransferIOSWithCallBack((data: any) => {
+    callback(data);
+  });
+}
+export function RNTransferDistance(option: any, callback: (arg0: any) => void) {
+  return CommonUtils.RNTransferDistance(option, (data: any) => {
+    callback(data);
+  });
+}
